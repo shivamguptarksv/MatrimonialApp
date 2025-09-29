@@ -19,7 +19,6 @@ class CoreDataManager {
   func saveUser(_ userData: UserData) {
     let entity = UserItem(context: viewContext)
     entity.uuid = userData.login.uuid
-    entity.matchStatus = userData.matchStatus.rawValue
     entity.timestamp = Date()
     
     do {

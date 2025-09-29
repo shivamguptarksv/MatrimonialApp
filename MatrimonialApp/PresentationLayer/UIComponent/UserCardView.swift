@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserCardView: View {
   
-  let user: UserData
+  @State var user: UserData
   var buttonTapped: ((UserData, MatchStatus) -> Void)?
   
   var body: some View {

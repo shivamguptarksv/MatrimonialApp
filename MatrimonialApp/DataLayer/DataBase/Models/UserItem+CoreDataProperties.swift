@@ -19,7 +19,6 @@ extension UserItem {
     @NSManaged public var timestamp: Date?
     @NSManaged public var uuid: String?
     @NSManaged public var userData: Data?
-    @NSManaged public var matchStatus: String?
 
 }
 

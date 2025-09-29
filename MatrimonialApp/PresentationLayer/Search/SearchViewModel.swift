@@ -13,6 +13,7 @@ class SearchViewModel: ObservableObject {
   @Published var users: [UserData] = []
   @Published var isLoading: Bool = false
   @Published var errorMessage: String?
+  @Published var refreshID = UUID()
   
   init() {
     fetchNewSearches()
@@ -27,8 +28,11 @@ class SearchViewModel: ObservableObject {
         for _ in 0..<5 {
           dummyResponse.append(contentsOf: result)
         }
-        self.users = dummyResponse
-        self.isLoading = false
+        withAnimation {
+          self.users = dummyResponse
+          self.refreshID = UUID()
+          self.isLoading = false
+        }
       } catch {
         self.errorMessage = "Failed to fetch bookmarks: \(error.localizedDescription)"
       }
@@ -39,6 +43,8 @@ class SearchViewModel: ObservableObject {
     var data = userData
     data.matchStatus = matchStatus
     CoreDataManager.shared.saveUser(data)
+    users.removeAll()
+    fetchNewSearches()
   }
   
 }

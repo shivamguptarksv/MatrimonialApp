@@ -23,13 +23,17 @@ struct SearchView: View {
               viewModel.acceptedTapped(userData: user, matchStatus: status)
             }
             .padding(.horizontal)
+            .tag(index)
           }
           .frame(height: 300)
           Spacer()
         }
         .navigationTitle("Search")
+        .id(viewModel.refreshID)
         .tabViewStyle(PageTabViewStyle())
         .indexViewStyle(.page(backgroundDisplayMode: .always))
+      }.onAppear {
+        viewModel.fetchNewSearches()
       }
     }
   }

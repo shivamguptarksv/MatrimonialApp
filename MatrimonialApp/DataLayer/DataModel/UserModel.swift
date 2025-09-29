@@ -94,7 +94,7 @@ struct DateInfo: Codable {
 
 // MARK: - ID
 
-struct UserId: Codable {
+struct UserId: Codable, Equatable {
   let name: String
   let value: String?
 }

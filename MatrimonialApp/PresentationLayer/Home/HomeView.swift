@@ -36,6 +36,9 @@ struct HomeView: View {
       }
       .navigationBarHidden(true)
       .background(Color.white.ignoresSafeArea())
+      .onAppear {
+        viewModel.fetchConnectionList()
+      }
     }
   }
   
