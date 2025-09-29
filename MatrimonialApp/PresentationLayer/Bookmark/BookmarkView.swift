@@ -9,20 +9,19 @@ import SwiftUI
 
 struct BookmarkView: View {
   
+  @StateObject private var viewModel = BookmarkViewModel()
+
   var body: some View {
     NavigationView {
       VStack {
         Text("Bookmark")
           .font(.title)
-        Text("Bookmark functionality will appear here.")
-          .foregroundColor(.secondary)
-          .padding()
       }
       .frame(height: 300)
       .navigationTitle("Bookmark")
     }
     .onAppear {
-      // TODO: Add logic
+      viewModel.fetchBookmarks()
     }
   }
   

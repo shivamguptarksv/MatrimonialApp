@@ -42,7 +42,7 @@ class SearchViewModel: ObservableObject {
   func acceptedTapped(userData: UserData, matchStatus: MatchStatus) {
     var data = userData
     data.matchStatus = matchStatus
-    CoreDataManager.shared.saveUser(data)
+    CoreDataManager.shared.storeNewUser(data)
     users.removeAll()
     fetchNewSearches()
   }

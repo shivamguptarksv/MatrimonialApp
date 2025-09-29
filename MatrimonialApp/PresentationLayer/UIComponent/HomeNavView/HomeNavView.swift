@@ -13,15 +13,6 @@ struct HomeNavView: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       HStack {
-        Button(action: {
-        }) {
-          Image(systemName: "circle.grid.2x2.fill")
-            .foregroundStyle(.gray)
-            .frame(width: 25, height: 30)
-        }
-        .buttonBorderShape(.roundedRectangle(radius: 15))
-        .buttonStyle(.borderedProminent)
-        .tint(.gray.opacity(0.1))
         
         Spacer()
         

@@ -8,8 +8,6 @@
 import SwiftUI
 
 class BookmarkViewModel: ObservableObject {
-
-  init() {}
   
   func fetchBookmarks() {
     // TODO: Add logic
