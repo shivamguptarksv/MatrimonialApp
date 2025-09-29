@@ -19,11 +19,10 @@ struct SearchView: View {
           ForEach(viewModel.users.indices, id: \.self) { index in
             let user = viewModel.users[index]
             
-            UserCardView(user: user) {
-              viewModel.acceptedTapped()
-            } declineTapped: {
-              viewModel.declinedTapped()
-            }.padding(.horizontal)
+            UserCardView(user: user) { (user, status) in
+              viewModel.acceptedTapped(userData: user, matchStatus: status)
+            }
+            .padding(.horizontal)
           }
           .frame(height: 300)
           Spacer()

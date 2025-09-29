@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum MatchStatus: String {
+enum MatchStatus: String, Codable {
   case pending = "Pending"
   case accepted = "Accepted"
   case declined = "Declined"
@@ -33,6 +33,11 @@ struct UserData: Codable {
   let id: UserId
   let picture: Picture
   let nat: String
+  var matchStatus: MatchStatus = .pending
+  
+  enum CodingKeys: String, CodingKey {
+      case gender, name, location, email, login, dob, registered, phone, cell, id, picture, nat
+  }
 }
 
 // MARK: - Name
@@ -109,18 +114,4 @@ struct Info: Codable {
   let results: Int
   let page: Int
   let version: String
-}
-
-// MARK: - User
-
-struct User: Identifiable {
-  
-  let id = UUID()
-  let name: String
-  let age: Int
-  let location: String
-  let gender: String
-  let country: String
-  let additionalInfo: String?
-  
 }

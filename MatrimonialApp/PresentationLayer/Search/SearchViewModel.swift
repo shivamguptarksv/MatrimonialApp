@@ -15,10 +15,10 @@ class SearchViewModel: ObservableObject {
   @Published var errorMessage: String?
   
   init() {
-    fetchBookmarks()
+    fetchNewSearches()
   }
   
-  func fetchBookmarks() {
+  func fetchNewSearches() {
    Task {
       do {
         let result = try await APIManager.shared.fetchUsers().results
@@ -35,12 +35,10 @@ class SearchViewModel: ObservableObject {
     }
   }
   
-  func acceptedTapped() {
-    // TODO:
-  }
-  
-  func declinedTapped() {
-    // TODO:
+  func acceptedTapped(userData: UserData, matchStatus: MatchStatus) {
+    var data = userData
+    data.matchStatus = matchStatus
+    CoreDataManager.shared.saveUser(data)
   }
   
 }

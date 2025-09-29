@@ -11,28 +11,26 @@ import SwiftUI
 class HomeViewModel: ObservableObject {
   
   @Published var users: [UserData] = []
+  var cachedData = [UserItem]()
   @Published var isLoading: Bool = false
   @Published var errorMessage: String?
   
   init() {
-    fetchBookmarks()
+    fetchConnectionList()
   }
   
-  func fetchBookmarks() {
+  func fetchConnectionList() {
     isLoading = true
     errorMessage = nil
-    
-    Task {
-      do {
-        let result = try await APIManager.shared.fetchUsers()
-        self.users = result.results
-        self.isLoading = false
-      } catch {
-        self.errorMessage = "Failed to fetch bookmarks: \(error.localizedDescription)"
-        self.isLoading = false
-      }
+    self.cachedData = try! CoreDataManager.shared.fetchUsers()
+    let data: [UserData] = cachedData.compactMap { userItem in
+      guard let userData = userItem.userData,
+            let dataDecoded = try? JSONDecoder().decode(UserData.self, from: userData) else {
+            return nil
+        }
+        return dataDecoded
     }
+    self.users = data
   }
-
   
 }

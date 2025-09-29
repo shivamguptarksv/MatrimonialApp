@@ -25,7 +25,6 @@ final class APIManager {
     self.session = URLSession(configuration: config)
 
     self.decoder = JSONDecoder()
-    //    self.decoder.keyDecodingStrategy = .convertFromSnakeCase
 
   }
  
