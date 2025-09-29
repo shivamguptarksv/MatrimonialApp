@@ -10,8 +10,8 @@ import SwiftUI
 struct UserCardView: View {
   
   let user: UserData
-  var acceptTapped: () -> Void
-  var declineTapped: () -> Void
+  var acceptTapped: (() -> Void)?
+  var declineTapped: (() -> Void)?
   
   var body: some View {
     VStack {
@@ -57,31 +57,33 @@ struct UserCardView: View {
       .padding()
       .frame(maxWidth: .infinity, alignment: .leading)
       
-      HStack(spacing: 20) {
-        Button(action: {
-          declineTapped()
-        }) {
-          Text("Decline")
-            .foregroundColor(.red)
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(Color.red.opacity(0.1))
-            .cornerRadius(10)
+      if acceptTapped != nil, declineTapped != nil {
+        HStack(spacing: 20) {
+          Button(action: {
+            declineTapped?()
+          }) {
+            Text("Decline")
+              .foregroundColor(.red)
+              .frame(maxWidth: .infinity)
+              .padding()
+              .background(Color.red.opacity(0.1))
+              .cornerRadius(10)
+          }
+          
+          Button(action: {
+            acceptTapped?()
+          }) {
+            Text("Accept")
+              .foregroundColor(.green)
+              .frame(maxWidth: .infinity)
+              .padding()
+              .background(Color.green.opacity(0.1))
+              .cornerRadius(10)
+          }
         }
-        
-        Button(action: {
-          acceptTapped()
-        }) {
-          Text("Accept")
-            .foregroundColor(.green)
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(Color.green.opacity(0.1))
-            .cornerRadius(10)
-        }
+        .padding(.horizontal)
+        .padding(.bottom)
       }
-      .padding(.horizontal)
-      .padding(.bottom)
     }
     .background(Color(.systemBackground))
     .cornerRadius(15)

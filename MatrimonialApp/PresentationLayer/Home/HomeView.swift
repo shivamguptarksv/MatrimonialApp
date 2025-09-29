@@ -25,12 +25,9 @@ struct HomeView: View {
             
             ForEach(viewModel.users.indices, id: \.self) { index in
               let user = viewModel.users[index]
-              
-              UserCardView(user: user) {
-                viewModel.acceptedTapped()
-              } declineTapped: {
-                viewModel.declinedTapped()
-              }.padding(.horizontal)
+                            
+              UserCardView(user: user, acceptTapped: nil, declineTapped: nil)
+                .padding(.horizontal)
             }
             
           }

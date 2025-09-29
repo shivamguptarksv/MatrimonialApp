@@ -22,20 +22,10 @@ struct BookmarkView: View {
       .navigationTitle("Bookmark")
     }
     .onAppear {
-      getData()
+      // TODO: Add logic
     }
   }
   
-  func getData() {
-    Task {
-      do {
-        let result = try await APIManager.shared.fetchUsers()
-        debugPrint("Result: \(result)")
-      } catch {
-        debugPrint("Error fetching users: \(error.localizedDescription)")
-      }
-    }
-  }
 }
 
 #Preview {

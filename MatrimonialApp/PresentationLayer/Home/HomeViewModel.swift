@@ -33,13 +33,6 @@ class HomeViewModel: ObservableObject {
       }
     }
   }
-  
-  func acceptedTapped() {
-    // TODO:
-  }
-  
-  func declinedTapped() {
-    // TODO:
-  }
+
   
 }
