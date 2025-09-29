@@ -10,8 +10,8 @@ import SwiftUI
 struct UserCardView: View {
   
   let user: UserData
-  var acceptTapped: () -> Void? = nil
-  var declineTapped: () -> Void? = nil
+  var acceptTapped: () -> Void
+  var declineTapped: () -> Void
   
   var body: some View {
     VStack {

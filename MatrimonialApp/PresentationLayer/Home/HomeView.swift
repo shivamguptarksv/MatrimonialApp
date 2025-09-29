@@ -29,7 +29,7 @@ struct HomeView: View {
               UserCardView(user: user) {
                 viewModel.acceptedTapped()
               } declineTapped: {
-                viewModel.acceptedTapped()
+                viewModel.declinedTapped()
               }.padding(.horizontal)
             }
             

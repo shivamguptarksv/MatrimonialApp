@@ -22,7 +22,7 @@ struct SearchView: View {
             UserCardView(user: user) {
               viewModel.acceptedTapped()
             } declineTapped: {
-              viewModel.acceptedTapped()
+              viewModel.declinedTapped()
             }.padding(.horizontal)
           }
           .frame(height: 300)
@@ -30,7 +30,7 @@ struct SearchView: View {
         }
         .navigationTitle("Search")
         .tabViewStyle(PageTabViewStyle())
-                        .indexViewStyle(.page(backgroundDisplayMode: .always))
+        .indexViewStyle(.page(backgroundDisplayMode: .always))
       }
     }
   }
