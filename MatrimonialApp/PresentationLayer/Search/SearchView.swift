@@ -18,13 +18,19 @@ struct SearchView: View {
         TabView {
           ForEach(viewModel.users.indices, id: \.self) { index in
             let user = viewModel.users[index]
-            UserCardView(user: user)
-              .padding(.horizontal)
+            
+            UserCardView(user: user) {
+              viewModel.acceptedTapped()
+            } declineTapped: {
+              viewModel.acceptedTapped()
+            }.padding(.horizontal)
           }
           .frame(height: 300)
           Spacer()
         }
         .navigationTitle("Search")
+        .tabViewStyle(PageTabViewStyle())
+                        .indexViewStyle(.page(backgroundDisplayMode: .always))
       }
     }
   }

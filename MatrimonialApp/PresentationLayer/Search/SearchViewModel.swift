@@ -35,4 +35,12 @@ class SearchViewModel: ObservableObject {
     }
   }
   
+  func acceptedTapped() {
+    // TODO:
+  }
+  
+  func declinedTapped() {
+    // TODO:
+  }
+  
 }

@@ -10,6 +10,8 @@ import SwiftUI
 struct UserCardView: View {
   
   let user: UserData
+  var acceptTapped: () -> Void? = nil
+  var declineTapped: () -> Void? = nil
   
   var body: some View {
     VStack {
@@ -57,7 +59,7 @@ struct UserCardView: View {
       
       HStack(spacing: 20) {
         Button(action: {
-          debugPrint("Declined \(user.name)")
+          declineTapped()
         }) {
           Text("Decline")
             .foregroundColor(.red)
@@ -68,7 +70,7 @@ struct UserCardView: View {
         }
         
         Button(action: {
-          debugPrint("Accepted \(user.name)")
+          acceptTapped()
         }) {
           Text("Accept")
             .foregroundColor(.green)
